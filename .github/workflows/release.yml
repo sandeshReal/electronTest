@@ -10,16 +10,7 @@ jobs:
       pull-requests: write
     runs-on: windows-latest
     steps:
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-        with:
-          tag_name: v1.0.0  # Adjust to a specific version/tag if needed
-          release_name: v1.0.0
-          draft: false
-          prerelease: false
+  
       
       - uses: actions/checkout@v2
       - name: Set up Node.js
@@ -28,7 +19,7 @@ jobs:
           node-version: 20
 
       - name: Install dependencies
-        run: npm ci 
+        run: npm install
 
       - name: Build project
         run: npm run build 
